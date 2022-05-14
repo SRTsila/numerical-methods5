@@ -31,10 +31,10 @@ def get_precise_values(n):
         x = a + h * i
         x_values.append(x)
         y_values.append(y(x))
-    plt.plot(x_values, y_values, label=f"y(x) {n}")
+    plt.plot(x_values, y_values, label=f"y(x)")
 
 
-def method_eiler(h, a, b):
+def eilors_method(h, a, b):
     values = []
     for i in arange(a + h, b + h, h):
         values.append(i)
@@ -45,10 +45,10 @@ def method_eiler(h, a, b):
         y_values.append(y_current)
         y_previous = y_current
     values.insert(0, x_0)
-    plt.plot(values, y_values, label=f'h={h}, eiler')
+    plt.plot(values, y_values, label=f'h={h}, koshi')
 
 
-def method_koshi(h, a, b):
+def koshis_method(h, a, b):
     values = []
     for i in arange(a + h, b + h, h):
         values.append(i)
@@ -61,7 +61,7 @@ def method_koshi(h, a, b):
         y_values.append(y_current)
         y_previous = y_current
     values.insert(0, x_0)
-    plt.plot(values, y_values, label=f'h={h}, koshi')
+    plt.plot(values, y_values, label=f'h={h}, eiler')
 
 
 def runges_method(h, x, y):
@@ -102,12 +102,12 @@ def adams_multon_method(h, a, b):
 
 if __name__ == '__main__':
     get_precise_values(500)
-    method_eiler(h_1, a, b)
-    method_eiler(h_2, a, b)
-    method_eiler(h_3, a, b)
-    method_koshi(h_1, a, b)
-    method_koshi(h_2, a, b)
-    method_koshi(h_3, a, b)
+    eilors_method(h_1, a, b)
+    eilors_method(h_2, a, b)
+    eilors_method(h_3, a, b)
+    koshis_method(h_1, a, b)
+    koshis_method(h_2, a, b)
+    koshis_method(h_3, a, b)
     adams_multon_method(h_1, a, b)
     adams_multon_method(h_2, a, b)
     adams_multon_method(h_3, a, b)
